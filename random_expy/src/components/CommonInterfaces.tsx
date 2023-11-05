@@ -26,6 +26,11 @@ interface Circle {
   radius:number
 }
 
+interface Line {
+  point1:Point
+  point2:Point
+}
+
 function stringify<T>(value:T) { return JSON.stringify(value)}
 
-export { Rectangle, Point, SvgRect, ViewBox, Circle, stringify} 
+export { Rectangle, Point, SvgRect, ViewBox, Circle, Line, stringify} 

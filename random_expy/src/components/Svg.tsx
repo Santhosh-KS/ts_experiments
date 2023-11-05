@@ -1,5 +1,6 @@
 import Circle from "./Circle"
-import {  SvgRect, ViewBox, Point, stringify } from "./CommonInterfaces"
+import Line from "./Line"
+import {  SvgRect, ViewBox, Point} from "./CommonInterfaces"
 
 
 function getViewbox(p:SvgRect): ViewBox {
@@ -12,12 +13,17 @@ function viewBoxString(v:ViewBox):string {
 }
 
 export default function Svg(p:SvgRect) {
-  const w = stringify(p.width)
-  const h = stringify(p.height)
+  // const w = stringify(p.width)
+  // const h = stringify(p.height)
   const vb = viewBoxString(getViewbox(p))
   return (
-  <svg width={w} height={h} viewBox={vb}>
-      <Circle />
+  <svg width={p.width} height={p.height} viewBox={vb}>
+      <Circle name="minute_marker" radius={90}/>
+      <Circle name="hour_marker" radius={90}/>
+      <g id="hour_hand">
+        <Line name="hand" point1={{x:0, y:0}} point2={{x:0, y:-50}} />
+        <Line name="hand hand--thick" point1={{x:0, y:-12}} point2={{x:0, y:-50}} />
+     </g>
   </svg>
    )
 }
