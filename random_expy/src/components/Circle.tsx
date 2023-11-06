@@ -1,4 +1,5 @@
-import { Circle as circle, stringify } from "./CommonInterfaces"
+import { Circle as circle } from "./CommonInterfaces"
+import {stringify} from "./Utils"
 
 type NamedCircle = circle & {
   name:string

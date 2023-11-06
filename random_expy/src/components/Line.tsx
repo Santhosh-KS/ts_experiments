@@ -11,11 +11,6 @@ export default function Line( {
   point2,
 }:NamedLine) {
   return (
-   <line 
-      x1={point1.x}
-      y1={point1.y}
-      x2={point2.x}
-      y2={point2.y}
-      className={name}
-   /> )
+   <line x1={point1.x} y1={point1.y} x2={point2.x} y2={point2.y}
+      className={name} /> )
 }

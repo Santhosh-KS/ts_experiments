@@ -1,4 +1,3 @@
-
 // type Stringify<T> = {
 //   [K in keyof T]: T[K] extends number | string ? `${T[K]}` : never
 // }[keyof T]
@@ -31,6 +30,5 @@ interface Line {
   point2:Point
 }
 
-function stringify<T>(value:T) { return JSON.stringify(value)}
 
-export { Rectangle, Point, SvgRect, ViewBox, Circle, Line, stringify} 
+export { Rectangle, Point, SvgRect, ViewBox, Circle, Line } 
