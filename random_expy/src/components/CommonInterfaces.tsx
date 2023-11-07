@@ -31,4 +31,10 @@ interface Line {
 }
 
 
-export { Rectangle, Point, SvgRect, ViewBox, Circle, Line } 
+interface TextTag {
+  description:string
+  location:Point
+}
+
+
+export { Rectangle, Point, SvgRect, ViewBox, Circle, Line, TextTag } 

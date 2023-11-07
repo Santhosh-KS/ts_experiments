@@ -43,9 +43,9 @@ body {
 }
 
 .debug {
-  fill:#f0f0c9;
+  fill:gray;
   font-family: "Arial", "sans-serif";
   text-anchor: middle;
-  stroke: white;
+  stroke: gray;
   user-select: none;
 }
