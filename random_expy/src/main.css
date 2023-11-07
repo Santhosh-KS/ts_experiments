@@ -41,3 +41,11 @@ body {
   stroke-width:2;
   stroke:white;
 }
+
+.debug {
+  fill:#f0f0c9;
+  font-family: "Arial", "sans-serif";
+  text-anchor: middle;
+  stroke: white;
+  user-select: none;
+}

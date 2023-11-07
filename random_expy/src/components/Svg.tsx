@@ -15,7 +15,7 @@ function viewBoxString(v:ViewBox):string {
 }
 
 function getTime(date:Date):[number,number,number] {
-  const [second, setSecond] = useState(date.getSeconds())
+  const [second, setSecond] = useState(date.getSeconds()+date.getMilliseconds())
   const [min, setMin] = useState(date.getMinutes())
   const [hour, setHour] = useState(date.getHours())
   let requestRef = useRef<number>();
@@ -28,7 +28,7 @@ function getTime(date:Date):[number,number,number] {
       // to make sure we always have the latest state
       setSecond(prevCount => (prevCount + deltaTime * 0.001) % 60);
       setMin(prevCount => (prevCount + deltaTime * (0.001/60) % 60));
-      setHour(prevCount => (prevCount + deltaTime * 0.001/(60*60)) % 60);
+      setHour(prevCount => (prevCount + deltaTime * (0.001/(60*12)) % 60));
     }
     previousTimeRef.current = time;
     requestRef.current = requestAnimationFrame(animate);
@@ -48,7 +48,7 @@ export default function Svg(p:SvgRect) {
   const  [hour, min, sec]= getTime(date)
   const rsec = `rotate(${(360/60)*sec})`
   const rmin= `rotate(${(360/60)*min})`
-  const rhour= `rotate(${(360/60)*hour})`
+  const rhour= `rotate(${(360/12)*hour})`
   
   return (
   <svg width={p.width} height={p.height} viewBox={vb}>
@@ -63,6 +63,9 @@ export default function Svg(p:SvgRect) {
         <Line name="hand" point1={{x:0, y:0}} point2={{x:0, y:-80}} />
         <Line name="hand hand--thick" point1={{x:0, y:-12}} point2={{x:0, y:-80}} />
      </g>
+      <text className="debug" x="45" y="25">sec: {sec.toFixed(2)} </text>
+      <text className="debug" x="45" y="45">min: {min.toFixed(2)} </text>
+      <text className="debug" x="45" y="65">hr : {hour.toFixed(2)} </text>
 
       <g id="second_hand" transform={rsec}>
         <Line name="hand hand--second" point1={{x:0, y:12}} point2={{x:0, y:-80}} />
