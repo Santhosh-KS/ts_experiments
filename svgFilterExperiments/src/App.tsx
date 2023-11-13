@@ -1,10 +1,10 @@
 import  SvgFilter from "./SvgFilter"
+import SvgClipPath from "./SvgClipPath"
 
 function App() {
   return (
     <>
-  <SvgFilter />
-  <SvgFilter />
+   <SvgFilter/>
   </>
   )
 }
