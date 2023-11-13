@@ -1,10 +1,13 @@
-import  SvgFilter from "./SvgFilter"
-import SvgClipPath from "./SvgClipPath"
+import StarEffect from "./StarEffect"
+import ChalkEffect from "./ChalkEffect";
+import InkEffect from "./InkEffect";
 
 function App() {
   return (
     <>
-   <SvgFilter/>
+      <InkEffect/>
+   <ChalkEffect/>
+   <StarEffect/>
   </>
   )
 }
