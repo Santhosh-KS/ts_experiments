@@ -5,11 +5,17 @@ import RingNebula from "./RingNebulaEffect";
 import SolarEclipseEffect from "./SolarEclipEffect";
 import OilOnWaterEffect from "./OilOnWaterEffect";
 import DilutedWaterPaintEffect from "./DilutedWaterColorEffect";
+import DarkWaterEffect from "./DarkWaterColorEffect";
+import ReflectionEffect from "./ReflectionEffect";
+import RotatingRect from "./AnimateBasics";
 function App() {
   return (
   <>
-   <OilOnWaterEffect/>
+    <RotatingRect/>
+   <ReflectionEffect/>
+   <DarkWaterEffect/>
    <DilutedWaterPaintEffect/>
+   <OilOnWaterEffect/>
    <SolarEclipseEffect/>
    <RingNebula/>
    <InkEffect/>
