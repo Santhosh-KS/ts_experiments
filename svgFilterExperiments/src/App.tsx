@@ -2,16 +2,18 @@ import StarEffect from "./StarEffect"
 import ChalkEffect from "./ChalkEffect";
 import InkEffect from "./InkEffect";
 import RingNebula from "./RingNebulaEffect";
-
+import SolarEclipseEffect from "./SolarEclipEffect";
 function App() {
   return (
   <>
-      <RingNebula/>
+      <SolarEclipseEffect/>
   </>
   )
 }
 
-      /* <InkEffect/>
+      /*
+      <RingNebula/>
+      <InkEffect/>
    <ChalkEffect/>
    <StarEffect/> */
 export default App
