@@ -3,17 +3,20 @@ import ChalkEffect from "./ChalkEffect";
 import InkEffect from "./InkEffect";
 import RingNebula from "./RingNebulaEffect";
 import SolarEclipseEffect from "./SolarEclipEffect";
+import OilOnWaterEffect from "./OilOnWaterEffect";
+import DilutedWaterPaintEffect from "./DilutedWaterColorEffect";
 function App() {
   return (
   <>
-      <SolarEclipseEffect/>
+   <OilOnWaterEffect/>
+   <DilutedWaterPaintEffect/>
+   <SolarEclipseEffect/>
+   <RingNebula/>
+   <InkEffect/>
+   <ChalkEffect/>
+   <StarEffect/> 
   </>
   )
 }
 
-      /*
-      <RingNebula/>
-      <InkEffect/>
-   <ChalkEffect/>
-   <StarEffect/> */
 export default App
