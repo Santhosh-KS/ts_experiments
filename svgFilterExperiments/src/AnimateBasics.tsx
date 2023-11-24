@@ -10,6 +10,7 @@ export default function RotatingRect() {
       // {animatingCircle}
   return (
       <svg viewBox='0 0 200 200'>
+        <path id="path40042" d="M4071.863 2630.96a6.004 6.004 0 0 1 1.943-3.973 6.004 6.004 0 0 1 4.151-1.526 5.988 5.988 0 0 1 3.664 1.406" stroke="black" strokeWidth="10"/>
       <rect width="10%" height="10%" >
         <animate attributeName="x" dur="10s" values="0; 10; 100"  calcMode="linear" fill="freeze"/>
       </rect>
@@ -39,6 +40,23 @@ export default function RotatingRect() {
         <animate attributeName="rx" begin="pulse.end" dur="10s" values="0;10" fill="freeze"/>
         <animate attributeName="fill" begin="pulse.end" dur="5s" from="gray" to="green" fill="freeze"/>
       </rect>
+        <animate attributeName="stroke" dur="10s" from="green" to="magenta" fill="freeze"/>
+      <rect y="122" width="10%" height="10%" fill="none" stroke="green" >
+        <animate attributeName="rx" dur="10s" values="0;10" fill="freeze"/>
+        <animate attributeName="stroke-width" dur="10s" values="0;10;2" fill="freeze"/>
+      </rect>
+     <circle fill="none" stroke="blue" strokeOpacity="0.1" stroke-width="4" cx="50" cy="50" r="44" />
+  <circle fill="blue" stroke="blue" opacity="0.8" cx="8" cy="54" r="6" >
+    <animateTransform
+      attributeName="transform"
+      dur="2s"
+      type="rotate"
+      from="0 50 48"
+      to="360 50 52"
+      repeatCount="indefinite" />
+    
+  </circle>
+
       </svg>
       )
 }

@@ -8,10 +8,17 @@ import DilutedWaterPaintEffect from "./DilutedWaterColorEffect";
 import DarkWaterEffect from "./DarkWaterColorEffect";
 import ReflectionEffect from "./ReflectionEffect";
 import RotatingRect from "./AnimateBasics";
+import DragAndDrop from "./DragAndDrop";
+
 function App() {
   return (
   <>
-    <RotatingRect/>
+      <DragAndDrop />
+  </>
+  )
+}
+
+    /* <RotatingRect/>
    <ReflectionEffect/>
    <DarkWaterEffect/>
    <DilutedWaterPaintEffect/>
@@ -20,9 +27,5 @@ function App() {
    <RingNebula/>
    <InkEffect/>
    <ChalkEffect/>
-   <StarEffect/> 
-  </>
-  )
-}
-
+   <StarEffect/>  */
 export default App
