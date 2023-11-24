@@ -4,11 +4,12 @@ type Position = {
     x: number,
     y: number,
     mouseDown:boolean,
+    color?:string,
 }
 
 export default function DragAndDrop() {
-   const [position, setPosition] = useState<Position>({ x:0, y:0, mouseDown:false })
-   function adjustPosition(e:MouseEvent<SVGElement>, downEvent:boolean):Position  {
+   const [position, setPosition] = useState<Position>({ x:0, y:0, mouseDown:false, color:'red' })
+   function adjustPosition(e:MouseEvent<SVGElement>, downEvent:boolean, color='yellow'):Position  {
       let svg  = document.querySelector('#mySvg') as SVGSVGElement
       let pt = svg.createSVGPoint()
       pt.x = e.clientX
@@ -17,14 +18,15 @@ export default function DragAndDrop() {
       pt = pt.matrixTransform(t.inverse())
       console.log(pt)
       return {
-        x:pt.x ,
-        y:pt.y ,
-        mouseDown:downEvent
+        x:pt.x,
+        y:pt.y,
+        mouseDown:downEvent,
+        color:color
       };
    }
 
   function handleMouseUp(e:MouseEvent<SVGElement>) {
-    const pos = adjustPosition(e, false);
+    const pos = adjustPosition(e, false, 'red');
     setPosition(pos)
     // printEvent(e)
   }
@@ -46,25 +48,20 @@ export default function DragAndDrop() {
   }
 
   return (
-    <>
     <svg id="mySvg"
-        width="200px"
-        height="200px"
         viewBox="-1 -1 2 2" 
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{background: "indigo"}}>
           <circle 
-          id="circ1"
           cx={position.x}
           cy={position.y}
           onMouseUp={(e)=>handleMouseUp(e)}
           onMouseDown={(e)=>handleMouseDown(e)}
           onMouseMove={(e)=>handleMouseMove(e)}
           r="10%" 
-          fill="red" />
+          fill={position.color} />
     </svg>
-  </>
   )
 }
 
@@ -80,3 +77,11 @@ function printEvent(e:React.MouseEvent<SVGElement>) {
 }
 
 
+          /* <circle 
+          cx={position.x + 0.7}
+          cy={position.y + 0.7}
+          onMouseUp={(e)=>handleMouseUp(e)}
+          onMouseDown={(e)=>handleMouseDown(e)}
+          onMouseMove={(e)=>handleMouseMove(e)}
+          r="8%" 
+          fill="blue" /> */
