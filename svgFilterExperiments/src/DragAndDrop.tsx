@@ -1,4 +1,4 @@
-import { useState, MouseEvent} from 'react'
+import { useState, MouseEvent, WheelEvent} from 'react'
 
 type Position = {
     x: number,
@@ -7,9 +7,14 @@ type Position = {
     color?:string,
     opacity?:string
 }
+type WindowProp = {
+  width:number,
+  height:number,
+}
 
 export default function DragAndDrop() {
    const [position, setPosition] = useState<Position>({ x:0, y:0, mouseDown:false, color:'red', opacity:"100%" })
+   const [windowSize, setWindowSize] = useState<WindowProp>({width:25, height:25})
    function adjustPosition(e:MouseEvent<SVGElement>, downEvent:boolean, color='blue', opacity="100%"):Position  {
       let svg  = document.querySelector('#mySvg') as SVGSVGElement
       let pt = svg.createSVGPoint()
@@ -26,6 +31,7 @@ export default function DragAndDrop() {
         opacity:opacity
       };
    }
+ 
 
   function handleMouseUp(e:MouseEvent<SVGElement>) {
     const pos = adjustPosition(e, false, 'red', '100%');
@@ -49,6 +55,26 @@ export default function DragAndDrop() {
     }
   }
 
+  function handleWheelEvent(e:WheelEvent<SVGSVGElement>) {
+    /* const zoomIn = 10
+    if e.deltaY >= 0 {
+      windowSize.delta.x + 10  
+    } else {
+
+    } */
+    const ws: WindowProp = {width:windowSize.width, height:windowSize.height}
+    // console.log(e.deltaY)
+    if (e.deltaY <= 0) {
+      ws.width = Math.min(ws.width + 10, 200)
+      ws.height = Math.min(ws.height+10, 200)
+    } else {
+      ws.width = Math.max(ws.width - 10, 50)
+      ws.height = Math.max(ws.height - 10, 50)
+    }
+    setWindowSize(ws)
+    // console.log(ws)
+  }
+
         // style={{background: "indigo"}}>
 
             /* <pattern id="grid" width="2%" height="2%" >
@@ -62,11 +88,12 @@ export default function DragAndDrop() {
   const strokeColor = 'green'
   return (
     <svg id="mySvg"
-        width='50%'
-        height='50%'
+        width={windowSize.width.toString()+"%"}
+        height={windowSize.height.toString()+"%"}
         viewBox="-1 -1 2 2" 
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
+      onWheel={(e)=>handleWheelEvent(e)}
         >
 
           <pattern id="leftDiagonalGrid" fill="lightblue" width="1%" height="1%" patternUnits="userSpaceOnUse">
