@@ -5,11 +5,12 @@ type Position = {
     y: number,
     mouseDown:boolean,
     color?:string,
+    opacity?:string
 }
 
 export default function DragAndDrop() {
-   const [position, setPosition] = useState<Position>({ x:0, y:0, mouseDown:false, color:'red' })
-   function adjustPosition(e:MouseEvent<SVGElement>, downEvent:boolean, color='yellow'):Position  {
+   const [position, setPosition] = useState<Position>({ x:0, y:0, mouseDown:false, color:'red', opacity:"100%" })
+   function adjustPosition(e:MouseEvent<SVGElement>, downEvent:boolean, color='blue', opacity="100%"):Position  {
       let svg  = document.querySelector('#mySvg') as SVGSVGElement
       let pt = svg.createSVGPoint()
       pt.x = e.clientX
@@ -21,18 +22,19 @@ export default function DragAndDrop() {
         x:pt.x,
         y:pt.y,
         mouseDown:downEvent,
-        color:color
+        color:color,
+        opacity:opacity
       };
    }
 
   function handleMouseUp(e:MouseEvent<SVGElement>) {
-    const pos = adjustPosition(e, false, 'red');
+    const pos = adjustPosition(e, false, 'red', '100%');
     setPosition(pos)
     // printEvent(e)
   }
 
   function handleMouseDown(e:MouseEvent<SVGElement>) {
-    const pos = adjustPosition(e, true);
+    const pos = adjustPosition(e, true,'red', '50%');
     setPosition(pos)
     // console.log(position)
     // printEvent(e)
@@ -41,7 +43,7 @@ export default function DragAndDrop() {
   function handleMouseMove(e:MouseEvent<SVGElement>) {
     if (position.mouseDown) {
       handleMouseDown(e)
-      const pos = adjustPosition(e, true);
+      const pos = adjustPosition(e, true, 'blue', '40%');
       setPosition(pos)
       // console.log(position)
     }
@@ -56,14 +58,21 @@ export default function DragAndDrop() {
           <path d="M-1 0 L 1 0" fill='none' strokeWidth="0.05%" stroke='green' strokeLinecap='round'/>
         <rect x="-1" y="-1" width="100%" height="100%" fill="url(#smallGrid)"/>
             </pattern> */
-  const strokeColor = 'gray'
+
+  const strokeColor = 'green'
   return (
     <svg id="mySvg"
-        width='100%'
-        height='100%'
+        width='50%'
+        height='50%'
         viewBox="-1 -1 2 2" 
         preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+        >
+
+          <pattern id="leftDiagonalGrid" fill="lightblue" width="1%" height="1%" patternUnits="userSpaceOnUse">
+            <path d="M-1 -1 L 1 1" fill='none' strokeWidth="0.08%" stroke={'gray'} strokeLinecap='round' strokeOpacity="30%"/>
+          </pattern>
+          <rect x="-1" y="-1" width="100%" height="100%" fill="url(#leftDiagonalGrid)"/>
 
         <pattern id="smallGrid" width="1%" height="1%" patternUnits="userSpaceOnUse">
           <path d="M-1 0 L 1 0" fill='none' strokeWidth="0.05%" stroke={strokeColor} strokeLinecap='round' strokeOpacity="80%"/>
@@ -75,15 +84,16 @@ export default function DragAndDrop() {
         </pattern>
         <rect x="-1" y="-1" width="100%" height="100%" fill="url(#smallGrid)"/>
         <rect x="-1" y="-1" width="100%" height="100%" fill="url(#bigGrid)"/>
-
+        <circle id="origin" r="0.5%" fill='black' stroke='yellow' strokeWidth="0.1%" opacity="30%"/>
           <circle 
             cx={position.x}
             cy={position.y}
             onMouseUp={(e)=>handleMouseUp(e)}
             onMouseDown={(e)=>handleMouseDown(e)}
             onMouseMove={(e)=>handleMouseMove(e)}
-            r="10%" 
+            r="5%" 
             fill={position.color} 
+            opacity={position.opacity}
           />
 
     </svg>
