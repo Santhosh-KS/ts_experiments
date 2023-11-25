@@ -62,16 +62,18 @@ export default function DragAndDrop() {
     } else {
 
     } */
-    const ws: WindowProp = {width:windowSize.width, height:windowSize.height}
-    // console.log(e.deltaY)
-    if (e.deltaY <= 0) {
-      ws.width = Math.min(ws.width + 10, 200)
-      ws.height = Math.min(ws.height+10, 200)
-    } else {
-      ws.width = Math.max(ws.width - 10, 50)
-      ws.height = Math.max(ws.height - 10, 50)
+    if (e.ctrlKey) {
+      const ws: WindowProp = {width:windowSize.width, height:windowSize.height}
+      // console.log(e.deltaY)
+      if (e.deltaY <= 0) {
+        ws.width = Math.min(ws.width + 10, 200)
+        ws.height = Math.min(ws.height+10, 200)
+      } else {
+        ws.width = Math.max(ws.width - 10, 50)
+        ws.height = Math.max(ws.height - 10, 50)
+      }
+      setWindowSize(ws)
     }
-    setWindowSize(ws)
     // console.log(ws)
   }
 
