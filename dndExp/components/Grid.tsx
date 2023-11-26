@@ -1,3 +1,10 @@
+export type RectProps = {
+  /* parentId:string,
+  id:string */
+  width:number,
+  height:number,
+}
+
 export type GridProps = {
   name:string
   width:number,

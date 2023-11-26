@@ -1,10 +1,10 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useState, WheelEvent } from "react";
 
 type CircleProps = {
-    x: number,
-    y: number,
+    x?: number,
+    y?: number,
     r: number,
-    mouseDown:boolean,
+    mouseDown?:boolean,
     color:'red' | 'green' | 'blue' | 'lightblue' | 'gray' | 'black' | 'violet' | 'magenta' | 'cyan',
     opacity?:number
 }
@@ -12,6 +12,21 @@ type CircleProps = {
 export default function Circle(props:CircleProps={ x:0, y:0, r:5, mouseDown:false, color:'red', opacity:100 }) {
    const [position, setCircleProps] = useState<CircleProps>(props)
 
+  function handleWheelEvent(e:WheelEvent<SVGElement>) {
+    if (e.shiftKey) {
+      // TODO: Keypath and case path usecases
+      const p:CircleProps = {x:position.x, 
+        y:position.y, r:position.r, 
+        mouseDown:position.mouseDown, 
+        color:position.color, opacity:position.opacity} 
+      if (e.deltaY <= 0) {
+        p.r = Math.min(p.r+0.1, 10)
+      } else {
+        p.r = Math.max(p.r-0.1, 2)
+      }
+      setCircleProps(p)
+    }
+  }
   function adjustCircleProps(e:MouseEvent<SVGElement>, 
     downEvent:boolean,
     opacity=100):CircleProps  {
@@ -57,6 +72,7 @@ export default function Circle(props:CircleProps={ x:0, y:0, r:5, mouseDown:fals
       onMouseUp={(e)=>handleMouseUp(e)}
       onMouseDown={(e)=>handleMouseDown(e)}
       onMouseMove={(e)=>handleMouseMove(e)}
+      onWheel={(e)=>handleWheelEvent(e)}
       r={position.r.toString()+"%"}
       fill={position.color} 
       opacity={position.opacity?.toString()+"%"}

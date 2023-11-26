@@ -8,10 +8,10 @@ type WindowProp = {
 }
 
 export default function DragAndDrop() {
-   const [windowSize, setWindowSize] = useState<WindowProp>({width:100, height:100})
+   const [windowSize, setWindowSize] = useState<WindowProp>({width:100, height:0})
  
   function handleWheelEvent(e:WheelEvent<SVGSVGElement>) {
-    if (e.ctrlKey) {
+    /* if (e.ctrlKey) {
       const ws: WindowProp = {width:windowSize.width, height:windowSize.height}
       // console.log(e.deltaY)
       if (e.deltaY <= 0) {
@@ -22,12 +22,12 @@ export default function DragAndDrop() {
         ws.height = Math.max(ws.height - 10, 50)
       }
       setWindowSize(ws)
-    }
+    } */
   }
 
   return (
     <svg id="mySvg"
-        width={windowSize.width.toString()+"%"}
+        width={(windowSize.width).toString()+"%"}
         height={windowSize.height.toString()+"%"}
         viewBox="-1 -1 2 2" 
         preserveAspectRatio="none"
@@ -39,9 +39,9 @@ export default function DragAndDrop() {
       <Grid name="small" width={1} height={1} stroke={{color:'green', width:0.08, opacity:20}} angle={0} /> 
       <Grid name="big" width={4} height={4} stroke={{color:'green', width:0.1, opacity:30}} angle={0}/> 
       <circle id="origin" r="0.5%" fill='lightblue' stroke='violet' strokeWidth="0.1%" opacity="30%"/>
-      <Circle r={5} mouseDown={false} color={'red'} opacity={100} />
-      <Circle r={3} mouseDown={false} color={'green'} opacity={100} />
-      <Circle x={0.5} y={0.1} r={3} mouseDown={false} color={'violet'} opacity={100} />
+      <Circle r={5}  color={'red'}  />
+      <Circle r={3}  color={'green'} />
+      <Circle x={0.5} y={0.1} r={3}  color={'violet'} />
     </svg>
   )
 }
