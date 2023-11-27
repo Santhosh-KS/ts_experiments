@@ -11,7 +11,7 @@ export default function DragAndDrop() {
    const [windowSize, setWindowSize] = useState<WindowProp>({width:100, height:0})
  
   function handleWheelEvent(e:WheelEvent<SVGSVGElement>) {
-    /* if (e.ctrlKey) {
+    if (e.ctrlKey) {
       const ws: WindowProp = {width:windowSize.width, height:windowSize.height}
       // console.log(e.deltaY)
       if (e.deltaY <= 0) {
@@ -22,7 +22,7 @@ export default function DragAndDrop() {
         ws.height = Math.max(ws.height - 10, 50)
       }
       setWindowSize(ws)
-    } */
+    }
   }
 
   return (

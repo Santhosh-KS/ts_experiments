@@ -41,6 +41,7 @@ export default function Grid(props:GridProps) {
       <rect x="-1.5" y="-1.5"
         width="150%" height="150%"
         fill={`url(#${props.name})`} 
+        vectorEffect={"non-scaling-stroke"}
         transform={`rotate(${props.angle})`} />
     </>
   )
