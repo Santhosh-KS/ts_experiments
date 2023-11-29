@@ -28,7 +28,7 @@ export default function DragAndDrop() {
     callback:updateCircle,
   }
 
-  const [windowSize, setWindowSize] = useState<WindowProp>({width:100, height:0})
+  const [windowSize, setWindowSize] = useState<WindowProp>({width:100, height:100})
 
   function handleWheelEvent(e:WheelEvent<SVGSVGElement>) {
     if (e.ctrlKey) {
@@ -42,15 +42,15 @@ export default function DragAndDrop() {
         ws.height = Math.max(ws.height - 10, 50)
       }
       setWindowSize(ws)
+      console.log(ws)
     }
   }
 
   return (
     <svg id="mySvg"
-        width={(windowSize.width).toString()+"%"}
+        width={windowSize.width.toString()+"%"}
         height={windowSize.height.toString()+"%"}
         viewBox="-1 -1 2 2" 
-        preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       onWheel={(e)=>handleWheelEvent(e)}
         >

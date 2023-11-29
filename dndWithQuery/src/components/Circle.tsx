@@ -89,6 +89,7 @@ export default function Circle(props:CircleProps) {
         fontFamily='Vollkorn'
         fontSize={"0.03"} 
         pointerEvents="none"
+        vectorEffect="non-scaling-size"
         fill="#000000">
         {circleProps.id.toString()}
     </text>

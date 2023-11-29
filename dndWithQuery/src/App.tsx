@@ -1,8 +1,6 @@
-import DragAndDrop from "./components/DragAndDrop"
-
+import Draw from "./components/Draw"
 function App() {
-
-  return (<DragAndDrop/>)
+   return (<Draw/>)
 }
 
 export default App
