@@ -73,38 +73,89 @@ export default function Circle(props:CircleProps) {
         onMouseMove={(e)=>handleMouseMove(e)} 
       viewBox="0.1 0.1 1.1 1" 
         onWheel={(e)=>handleWheelEvent(e)}  */
-  const scale="scale(0.1)"
   return(
     <>
-    <svg
-      id="svg1"
-      fill='blue'
-      transform="scale(0.1) translate(0.1, 0.1)"
-      xmlns="http://www.w3.org/2000/svg"
-        opacity={"40%"}
-    >
-      <rect width={"100%"} height={"100%"} />
-    </svg>
+      <svg
+        id="verticalBlue"
+        fill='blue'
+        viewBox="1 0 1.1 1.1" 
+        xmlns="http://www.w3.org/2000/svg"
+          opacity={"40%"}
+      >
+        <rect width={"100%"} height={"100%"} />
 
-    <svg
-      id="svg2"
-      fill='red'
-      transform={"scale(0.1) translate(1.1, 0.1)"}
-      xmlns="http://www.w3.org/2000/svg"
-        opacity={"40%"}
-    >
-      <rect width={"100%"} height={"100%"} />
-    </svg>
+        <svg
+          id="gray-1"
+          fill='white'
+          viewBox="0 1 1.1 1.1" 
+          transform="translate(0,0.1)"
+          xmlns="http://www.w3.org/2000/svg"
+            opacity={"90%"}
+        >
+          <rect width={"100%"} height={"100%"} />
+        </svg>
 
-    <svg
-      id="svg2"
-      fill='red'
-      transform="scale(0.1) translate(0.1, 1.1)"
-      xmlns="http://www.w3.org/2000/svg"
-        opacity={"40%"}
-    >
-      <rect width={"100%"} height={"100%"} />
-    </svg>
+        <svg
+          id="green-1"
+          fill='green'
+          viewBox="0 1 1.1 1.1" 
+          transform="translate(0,0.2)"
+          xmlns="http://www.w3.org/2000/svg"
+            opacity={"90%"}
+        >
+          <rect width={"100%"} height={"100%"} />
+        </svg>
+        <svg
+          id="gray-1"
+          fill='white'
+          viewBox="0 1 1.1 1.1" 
+          transform="translate(0,0.3)"
+          xmlns="http://www.w3.org/2000/svg"
+            opacity={"90%"}
+        >
+          <rect width={"100%"} height={"100%"} />
+        </svg>
+      </svg>
+      <svg
+        id="horizontalRed"
+        fill='red'
+        viewBox="0 1 1.1 1.1" 
+        transform="translate(0.09,0)"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width={"100%"} height={"100%"} />
+        <svg
+          id="white-1"
+          fill='white'
+          viewBox="1 0 1.1 1.1" 
+          xmlns="http://www.w3.org/2000/svg"
+            opacity={"90%"}
+        >
+          <rect width={"100%"} height={"100%"} />
+        </svg>
+
+        <svg
+          id="black-1"
+          fill='black'
+          viewBox="1 0 1.1 1.1" 
+          transform="translate(0.1,0)"
+            opacity={"90%"}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width={"100%"} height={"100%"} />
+        </svg>
+
+        <svg
+          id="white-2"
+          fill='white'
+          viewBox="1 0 1.1 1.1" 
+          opacity={"90%"}
+          transform="translate(0.2,0)"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width={"100%"} height={"100%"} />
+        </svg>
+      </svg>
     </>
   )
 }
