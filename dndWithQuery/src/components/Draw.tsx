@@ -8,12 +8,13 @@ type WindowProp = {
 
 export default function Draw() {
 
-  const [windowSize, setWindowSize] = useState<WindowProp>({width:100, height:100})
+  const [windowSize, setWindowSize] = useState<WindowProp>({width:150, height:100})
 
+        /* width={windowSize.width.toString()+"%"}
+        height={windowSize.height.toString()+"%"} */
   return (
     <svg id="mySvg"
-        width={windowSize.width.toString()+"%"}
-        height={windowSize.height.toString()+"%"}
+      alignmentBaseline="middle"
         viewBox="-1 -1 2 2" 
         xmlns="http://www.w3.org/2000/svg"
         >

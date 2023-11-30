@@ -68,31 +68,43 @@ export default function Circle(props:CircleProps) {
     }
   }
 
+        /* onMouseUp={(e)=>handleMouseUp(e)}
+        onMouseDown={(e)=>handleMouseDown(e)}
+        onMouseMove={(e)=>handleMouseMove(e)} 
+      viewBox="0.1 0.1 1.1 1" 
+        onWheel={(e)=>handleWheelEvent(e)}  */
+  const scale="scale(0.1)"
   return(
-    <g
-      onMouseUp={(e)=>handleMouseUp(e)}
-      onMouseDown={(e)=>handleMouseDown(e)}
-      onMouseMove={(e)=>handleMouseMove(e)} 
-      onWheel={(e)=>handleWheelEvent(e)} 
+    <>
+    <svg
+      id="svg1"
+      fill='blue'
+      transform="scale(0.1) translate(0.1, 0.1)"
+      xmlns="http://www.w3.org/2000/svg"
+        opacity={"40%"}
     >
-    <circle 
-      cx={circleProps.center.x}
-      cy={circleProps.center.y}
-      r={circleProps.radius.toString()+"%"}
-      fill={circleProps.display.fill.color} 
-      fillRule="nonzero"
-      opacity={circleProps.display.opacity?.toString()+"%"}
-    />
-    <text 
-        x={circleProps.center.x-0.01}
-        y={circleProps.center.y+0.01}
-        fontFamily='Vollkorn'
-        fontSize={"0.03"} 
-        pointerEvents="none"
-        vectorEffect="non-scaling-size"
-        fill="#000000">
-        {circleProps.id.toString()}
-    </text>
-    </g>
+      <rect width={"100%"} height={"100%"} />
+    </svg>
+
+    <svg
+      id="svg2"
+      fill='red'
+      transform={"scale(0.1) translate(1.1, 0.1)"}
+      xmlns="http://www.w3.org/2000/svg"
+        opacity={"40%"}
+    >
+      <rect width={"100%"} height={"100%"} />
+    </svg>
+
+    <svg
+      id="svg2"
+      fill='red'
+      transform="scale(0.1) translate(0.1, 1.1)"
+      xmlns="http://www.w3.org/2000/svg"
+        opacity={"40%"}
+    >
+      <rect width={"100%"} height={"100%"} />
+    </svg>
+    </>
   )
 }

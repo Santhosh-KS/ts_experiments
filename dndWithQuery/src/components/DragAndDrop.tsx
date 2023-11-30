@@ -46,20 +46,25 @@ export default function DragAndDrop() {
     }
   }
 
+        /* width={windowSize.width.toString()+"%"}
+        height={windowSize.height.toString()+"%"} */
   return (
     <svg id="mySvg"
-        width={windowSize.width.toString()+"%"}
-        height={windowSize.height.toString()+"%"}
-        viewBox="-1 -1 2 2" 
-        xmlns="http://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox='0 0 1 1'
+      width={"200px"}
+      height={"200px"}
+      fill='lightblue'
       onWheel={(e)=>handleWheelEvent(e)}
-        >
-      <Grid name="left" width={1} height={1} stroke={{color:'gray', width:0.08, opacity:10}} angle={45} /> 
-      <Grid name="right" width={1} height={1} stroke={{color:'gray', width:0.08, opacity:10}} angle={-45} /> 
-      <Grid name="small" width={1} height={1} stroke={{color:'green', width:0.08, opacity:20}} angle={0} /> 
-      <Grid name="big" width={4} height={4} stroke={{color:'green', width:0.1, opacity:30}} angle={0}/> 
-      <circle r="0.5%" opacity="30%"/>
+    >
+      <rect width={"100%"} height={"100%"} />
       <Circle {...props}/>
     </svg>
   )
 }
+
+      /* <Grid name="left" width={0} height={1} stroke={{color:'gray', width:0.08, opacity:10}} angle={45} /> 
+      <Grid name="right" width={0} height={1} stroke={{color:'gray', width:0.08, opacity:10}} angle={-45} /> 
+      <Grid name="small" width={0} height={1} stroke={{color:'green', width:0.08, opacity:20}} angle={0} /> 
+      <Grid name="big" width={3} height={4} stroke={{color:'green', width:0.1, opacity:30}} angle={0}/> 
+      <circle r="-1.5%" opacity="30%"/> */
