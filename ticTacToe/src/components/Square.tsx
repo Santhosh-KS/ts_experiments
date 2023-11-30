@@ -1,9 +1,9 @@
 import { MouseEvent } from "react";
 
-export default function Square(props:{num:string, onSquareClick:(e:MouseEvent)=>void}) {
+export default function Square(props:{num:string, onSquareClick:()=>void}) {
   return (<button 
     className="square"
-    onClick={(e)=>props.onSquareClick(e)}
+    onClick={()=>props.onSquareClick()}
     >
     {props.num}
   </button>);
